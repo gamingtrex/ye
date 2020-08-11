@@ -12,6 +12,12 @@ const PREFIX = process.env.PREFIX;
 const youtube = new YouTube(process.env.YTAPI_KEY);
 const queue = new Map();
 
+bot.on('ready', () => {
+    console.log(":>!");
+    //bot.user.setActivity(`Prefix is`${prefix})
+        bot.user.setActivity(`to neix!play`,  { type: `LISTENING` });
+});
+
 bot.on("warn", console.warn);
 bot.on("error", console.error);
 bot.on("ready", () => console.log(`[READY] ${bot.user.tag} has been successfully booted up!`));
@@ -40,7 +46,7 @@ __**Command list**__
 > \`search\` > **\`search [title]\`**
 > \`skip\`, \`stop\`,  \`pause\`, \`resume\`
 > \`nowplaying\`, \`queue\`, \`volume\``)
-            .setFooter("hehe");
+            .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }));
         message.channel.send(helpembed);
     }
     if (command === "play" || command === "p") {
