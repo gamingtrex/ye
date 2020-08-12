@@ -45,7 +45,7 @@ __**Command list**__
 > \`play\` > **\`play [title/url]\`**
 > \`search\` > **\`search [title]\`**
 > \`skip\`, \`stop\`,  \`pause\`, \`resume\`
-> \`nowplaying\`, \`queue\`, \`volume\``)
+> \`nowplaying\`, \`queue\`, \`loop\`, \`volume\``)
             .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }));
         message.channel.send(helpembed);
     }
