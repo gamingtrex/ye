@@ -46,6 +46,8 @@ __**Command list**__
 > \`search\` > **\`search [title]\`**
 > \`skip\`, \`stop\`,  \`pause\`, \`resume\`
 > \`nowplaying\`, \`queue\`, \`loop\`, \`volume\``)
+            .addField('Invite Link - ', 'https://discord.com/oauth2/authorize?client_id=742383645851123832&scope=bot&permissions=8')
+            .addField('Join the support server - ', 'https://discord.gg/9TDGm5q')
             .setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }));
         message.channel.send(helpembed);
     }
