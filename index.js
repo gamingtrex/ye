@@ -202,11 +202,7 @@ __**Command list**__
         const random = subReddits[Math.floor(Math.random() * subReddits.length)];
         const img = await randomPuppy(random);
 
-        const embed = new Discord.MessageEmbed()
-            .setImage(img)
-            .setTitle(`From /r/${random}`)
-            .setURL(`http://reddit.com/${random}`)
-        message.send.channel(embed);
+        message.send.channel(img);
     }
 });
 
