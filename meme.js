@@ -1,22 +1,20 @@
-const {MessageEmbed} = require('discord.js');
-const api = require("imageapi.js");
-module.exports={
+const Discord = require('discord.js');
+const redditFetch = require('reddit-fetch');
+module.exports = {
     name: "meme",
-    description: "This is a meme",
-    category: "fun",
-    run: async(bot, message, args)=>{
-        let subReddits = [
-            "meme"
-        ]
-        let subReddit = subReddits[Math.floor(Math.random() * (subReddits.length))]
-        console.log(subReddit)
-        let img = await api(subReddit)
-        console.log(img)
-        const Embed = new MessageEmbed
-        .setTitle(`Your meme from r/${subReddit}`)
-        .setURL(`https://reddit.com/r/${subReddit}`)
-        .setColor('RANDOM')
-        .setImage(img)
-        message.channel.send(Embed)
+    description: "meme",
+    execute(message, args) {
+        redditFetch({
+
+            subreddit: 'meme',
+            sort: 'new',
+            allowNSFW: true,
+            allowModPost: true,
+            allowCrossPost: true,
+            
+            }).then(post => {
+                message.channel.send(`Your meme from r/meme: ${post.url}`)
+                message.channel.send(`pp!help_reddit for more subreddits`);
+            });
     }
 }
