@@ -1,6 +1,7 @@
-const { Client, Util, MessageEmbed } = require("discord.js");
+const { Client, Util, MessageEmbed, DiscordAPIError } = require("discord.js");
 const YouTube = require("simple-youtube-api");
 const ytdl = require("ytdl-core");
+const randomPuppy = require('random-puppy');
 require("dotenv").config();
 require("./server.js");
 
@@ -196,6 +197,16 @@ __**Command list**__
             return message.channel.send(`🔁  **|**  Loop is **\`${serverQueue.loop === true ? "enabled" : "disabled"}\`**`);
         };
         return message.channel.send("There is nothing playing");
+    } else if (command === "meme") {
+        const subReddits = ["meme"]
+        const random = subReddits[Math.floor(Math.random() * subReddits.length)];
+        const img = await randomPuppy(random);
+
+        const embed = new Discord.MessageEmbed()
+            .setImage(img)
+            .setTitle(`From /r/${random}`)
+            .setURL(`http://reddit.com/${random}`)
+        message.send.channel(embed);
     }
 });
 
